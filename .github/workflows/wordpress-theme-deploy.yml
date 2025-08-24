@@ -25,8 +25,8 @@ jobs:
             # Go to repo and pull latest changes
             cd /home/atypiquevofr/repositories/atypiquevoyages-wordpress-theme
             /usr/local/cpanel/3rdparty/lib/path-bin/git pull origin main
-
-           # Sync child theme
+            
+            # Sync child theme
             /bin/rsync -av --delete \
               /home/atypiquevofr/repositories/atypiquevoyages-wordpress-theme/backpacktraveler-child/ \
               /home/atypiquevofr/public_html/wp-content/themes/backpacktraveler-child/
