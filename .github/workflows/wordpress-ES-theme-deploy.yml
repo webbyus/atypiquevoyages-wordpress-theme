@@ -1,0 +1,32 @@
+name: Deploy to cPanel via SSH
+
+on:
+  push:
+    branches:
+      - main   # only deploy when pushing to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: PRODUCTION
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER_ES }}
+          key: ${{ secrets.SSH_KEY_ES }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Go to repo and pull latest changes
+            cd /home/atypiquevoes/repositories/atypiquevoyages-wordpress-theme
+            /usr/local/cpanel/3rdparty/lib/path-bin/git pull origin main
+            
+            # Sync child theme
+            /bin/rsync -av --delete \
+              /home/atypiquevoes/repositories/atypiquevoyages-wordpress-theme/backpacktraveler-child/ \
+              /home/atypiquevoes/public_html/wp-content/themes/backpacktraveler-child/
