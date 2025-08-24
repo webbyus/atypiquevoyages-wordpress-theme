@@ -1,0 +1,210 @@
+/*
+Theme Name: BackpackTraveler Child
+Theme URI: http://backpacktraveler.mikado-themes.com
+Description: A child theme of BackpackTraveler Theme
+Author: Mikado Themes
+Author URI: http://themeforest.net/user/mikado-themes
+Version: 1.0.0
+Text Domain: backpacktraveler
+Template: backpacktraveler
+*/
+.top-bar-txt-lang {
+  padding-top: 10px !important;
+  padding-left: 10px !important;
+  color: darkblue;
+}
+
+.top-bar-lang-link {
+  display: inline-flex !important;
+}
+
+#menu-language-menu {
+  padding: 5px 0px 0px 0px;
+  margin: 0px !important;
+}
+
+.mkdf-top-bar .widget.widget_nav_menu ul li {
+  padding: 0 2px !important;
+}
+
+.mkdf-top-bar .widget.widget_custom_html {
+  margin-top: 10px !important;
+}
+
+/* img.mkdf-normal-logo {
+    width: 280px!important;
+    height: 90px!important;
+    position: absolute; 
+    margin-top: -16px; 
+} */
+
+.mkdf-logo-wrapper a {
+  position: relative !important;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  margin-top: -26px !important;
+  height: 96px !important;
+}
+
+.mkdf-sticky-header .mkdf-sticky-holder .mkdf-logo-wrapper a {
+  max-height: 36px !important;
+  padding: 44px 0px 8px 0px !important;
+}
+
+div.mkdf-vertical-align-containers div.mkdf-position-left {
+  position: absolute;
+}
+
+.ui-state-disabled {
+  color: darkgray !important;
+}
+
+/*Page title*/
+.mkdf-title-holder.mkdf-centered-type .mkdf-page-title {
+    margin: 0;
+    color: white !important;
+    font-weight: bolder;
+}
+
+.mkdf-top-bar { 
+  background-color: white !important;
+ 
+}
+
+.ui-datepicker .ui-datepicker-title {
+  margin: 0 !important;
+
+}
+
+.mkdf-search-opener-holder{
+	margin-top:14px !important;
+}
+
+
+
+/* Minimal styling for Travel Request Form */
+
+   /* Narrow just this form */
+ .trf {
+   max-width: 720px;
+   /* change to 640/600 if you want thinner */
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 0 12px;
+   /* small side padding */
+ }
+
+/* Optional: make multi-column rows stack sooner */
+@media (max-width: 800px) {
+  .trf .trf__grid--2,
+  .trf .trf__grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trf h2 {
+  font-size: 26px;
+  margin: 0 0 12px;
+}
+
+.trf h3 {
+  font-size: 17px;
+  margin: 44px 0 28px;
+  font-weight: 500;
+}
+
+.trf label {
+  font-weight: 300;
+}
+
+/* Simple spacing between fields */
+.trf .trf__field {
+  margin-bottom: 18px;
+}
+
+/* If a field is the last one in a section, add a bit more space */
+.trf .trf__section .trf__field:last-child {
+  margin-bottom: 22px;
+}
+
+/* Radios / checkboxes: tighten items but add group spacing */
+.trf .wpcf7-radio,
+.trf .wpcf7-checkbox {
+  margin: 6px 0 2px;
+}
+
+.trf .wpcf7-list-item {
+  margin-right: 14px;
+}
+
+/* space between options */
+
+/* Submit button area */
+.trf .trf__actions {
+  margin-top: 20px;
+}
+
+.trf .trf__intro {
+  font-style: italic;
+  padding: 0px;
+  margin: 0px;
+  font-weight: 500;
+}
+/* Message*/
+.trf__message .wpcf7-response-output {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.trf__message .wpcf7-mail-sent-ok {
+  border: 1px solid #22c55e;
+  background: #ecfdf5;
+  color: #166534;
+}
+
+.trf__message .wpcf7-validation-errors,
+.trf__message .wpcf7-acceptance-missing {
+  border: 1px solid #fbbf24;
+  background: #fff8e6;
+  color: #92400e;
+}
+
+.trf__message .wpcf7-aborted,
+.trf__message .wpcf7-spam-blocked {
+  border: 1px solid #ef4444;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+/*Force arrows*/
+/* Reset default next/prev buttons */
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  background: none !important;
+  border: none !important;
+  top: 2px;
+  cursor: pointer;
+}
+
+/* Add left arrow */
+.ui-datepicker .ui-datepicker-prev::before {
+  content: "◀" !important;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* white for black header */
+  display: inline-block;
+}
+
+/* Add right arrow */
+.ui-datepicker .ui-datepicker-next::before {
+  content: "▶" !important;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+}
+/* Minimal styling for Travel Request Form */
