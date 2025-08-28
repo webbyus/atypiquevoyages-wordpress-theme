@@ -22,7 +22,7 @@ add_filter('the_content_more_link', 'modify_read_more_link');
 add_action('wp_head', 'add_google_analytics');
 function add_google_analytics()
 {
-    ?>
+?>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156540950-1"></script>
     <script>
@@ -121,7 +121,7 @@ add_action('wp_head', function () {
 /*Disable Testimonial Single Page View  */
 /*Redirect Single Testimonial Page To Home Page */
 
-if (is_plugin_active( 'testimonial-rotator/testimonial-rotator.php' )) {
+if (is_plugin_active('testimonial-rotator/testimonial-rotator.php')) {
 
     add_action('template_redirect', 'single_testimonial_redirect');
 
@@ -136,7 +136,42 @@ if (is_plugin_active( 'testimonial-rotator/testimonial-rotator.php' )) {
     }
 }
 
-add_filter( 'wpcf7_form_autocomplete', function ( $autocomplete ) {
+add_filter('wpcf7_form_autocomplete', function ($autocomplete) {
     $autocomplete = 'off';
     return $autocomplete;
-}, 10, 1 );
+}, 10, 1);
+
+
+
+function my_enqueue_monthpicker_assets()
+{
+    // WP’s own jQuery + jQuery UI pieces
+    wp_enqueue_script('jquery-ui-button');     // 👈 REQUIRED by MonthPicker
+    wp_enqueue_script('jquery-ui-datepicker'); // 👈 REQUIRED by MonthPicker
+
+
+    // MonthPicker 3.0.4
+    wp_enqueue_style(
+        'monthpicker-css',
+        'https://cdn.jsdelivr.net/npm/jquery-ui-month-picker@3.0.4/src/MonthPicker.min.css',
+        [],
+        '3.0.4'
+    );
+    wp_enqueue_script(
+        'monthpicker-js',
+        'https://cdn.jsdelivr.net/npm/jquery-ui-month-picker@3.0.4/src/MonthPicker.min.js',
+        ['jquery', 'jquery-ui-core', 'jquery-ui-button', 'jquery-ui-datepicker'],
+        '3.0.4',
+        true
+    );
+
+    // Your initializer
+    wp_enqueue_script(
+        'monthpicker-init',
+        get_stylesheet_directory_uri() . '/js/monthpicker-init.js',
+        ['monthpicker-js'],
+        '1.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_monthpicker_assets');

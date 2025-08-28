@@ -210,32 +210,8 @@ div.mkdf-vertical-align-containers div.mkdf-position-left {
 /* Minimal styling for Travel Request Form */
 
 /* Fix Month-Year datepicker styling */
-.ui-datepicker {
-  background: #fff !important;
-  border: 1px solid #ccc !important;
-  padding: 10px !important;
-  z-index: 9999 !important;
-}
 
-.ui-datepicker .ui-datepicker-title select {
-  background: #fff !important;
-  color: #000 !important;
-  border: 1px solid #ccc !important;
-  padding: 2px 4px !important;
-}
-
-.ui-datepicker .ui-datepicker-buttonpane {
-  background: #fff !important;
-  border-top: 1px solid #ccc !important;
-}
-
-.ui-datepicker-buttonpane .ui-datepicker-current { display: none !important; }
-
-#ui-datepicker-div .ui-widget-header .ui-datepicker-next
- {
-    right: 0px !important 
-}
-
-#ui-datepicker-div .ui-widget-header .ui-datepicker-prev {
-    left: 5px !important 
+.ui-widget-content {
+   background: white !important;
+   
 }

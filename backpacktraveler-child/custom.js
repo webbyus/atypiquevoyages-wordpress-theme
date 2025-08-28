@@ -9,34 +9,21 @@ jQuery(function ($) {
     minDate: today,
   });
 
-  // --- init #date-start (month + year only) ---
-  $.extend($.datepicker._defaults, { closeText: "Set Date", currentText: "" });
+  if ($start.length && $.fn.MonthPicker) {
+    $start.MonthPicker({
+      MonthFormat: "yy MM",
+      MinMonth: 0, // optional: block past months/years
+      MaxMonth: "+5y",
+      Button: false, // 👈 hide icon; picker shows on input focus
+      // prevent auto-close when we trigger Open() from a focus/click
+      OnBeforeMenuClose: function (e) {
+        if ($(e.target).is("#date-start")) e.preventDefault();
+      },
+    });
 
-  function tidy(inst) {
-    const $w = inst.dpDiv;
-    $w.find(".ui-datepicker-calendar, .ui-datepicker-current").hide();
-    $w.find(".ui-datepicker-close").val("Set Date");
+    // make absolutely sure it opens on both focus and click
+    $start.on("focus click", function () {
+      $(this).MonthPicker("Open"); // API method to open menu
+    });
   }
-
-  $start.datepicker({
-    dateFormat: "MM yy",
-    changeMonth: true,
-    changeYear: true,
-    showButtonPanel: true,
-    beforeShow: (input, inst) => setTimeout(() => tidy(inst), 0),
-    onChangeMonthYear: (y, m, inst) => {
-      setTimeout(() => tidy(inst), 0);
-      $start.datepicker("setDate", new Date(y, m - 1, 1));
-    },
-    onClose: (txt, inst) =>
-      $start.datepicker(
-        "setDate",
-        new Date(inst.selectedYear, inst.selectedMonth, 1)
-      ),
-  });
-
-  // --- readonly inputs need this to open the picker ---
-  $start.add($end).on("focus click", function () {
-    $(this).datepicker("show");
-  });
 });
