@@ -146,8 +146,8 @@ add_filter('wpcf7_form_autocomplete', function ($autocomplete) {
 function my_enqueue_monthpicker_assets()
 {
     // WP’s own jQuery + jQuery UI pieces
-    wp_enqueue_script('jquery-ui-button');     // 👈 REQUIRED by MonthPicker
-    wp_enqueue_script('jquery-ui-datepicker'); // 👈 REQUIRED by MonthPicker
+    wp_enqueue_script('jquery-ui-button');
+    wp_enqueue_script('jquery-ui-datepicker');
 
 
     // MonthPicker 3.0.4

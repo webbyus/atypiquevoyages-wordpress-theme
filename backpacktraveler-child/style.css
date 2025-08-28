@@ -211,7 +211,12 @@ div.mkdf-vertical-align-containers div.mkdf-position-left {
 
 /* Fix Month-Year datepicker styling */
 
-.ui-widget-content {
-   background: white !important;
-   
-}
+    /* change the overall background of the datepicker/monthpicker */
+    .ui-datepicker {
+        background-color: white !important; /* Example: AliceBlue */
+    }
+
+    /*  change the background of content areas within the picker */
+    .ui-widget-content {
+        background-color: white !important; /* Example: Lavender */
+    }
