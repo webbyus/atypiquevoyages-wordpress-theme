@@ -1,33 +1,45 @@
 jQuery(function ($) {
-  let dateToday = new Date();
+  const today = new Date();
+  const $start = $("#date-start");
+  const $end = $("#date-end");
 
-  // apply day picker only to other fields (not #date-start)
-  $(".past-days-disabled-date-field").not("#date-start").datepicker({
+  // no typing in either field
+  $start.add($end).prop("readonly", true);
+
+  // regular day pickers for others (exclude #date-start)
+  $(".past-days-disabled-date-field").not($start).datepicker({
     dateFormat: "dd-mm-yy",
-    minDate: dateToday,
+    minDate: today,
   });
 
-  // month–year only for #date-start
-  $("#date-start").datepicker({
+  // set global labels once
+  $.extend($.datepicker._defaults, { closeText: "Set Date", currentText: "" });
+
+  const tidyPanel = () => {
+    $(".ui-datepicker-calendar").hide();
+    $(".ui-datepicker-close").val("Set Date");
+  };
+
+  // month+year picker for #date-start
+  $start.datepicker({
+    dateFormat: "MM yy",
     changeMonth: true,
     changeYear: true,
     showButtonPanel: true,
-    dateFormat: "MM yy",
-    onClose: function (dateText, inst) {
-      $(this).datepicker(
-        "setDate",
-        new Date(inst.selectedYear, inst.selectedMonth, 1)
-      );
-    },
-    beforeShow: function () {
-      setTimeout(function () {
-        $(".ui-datepicker-calendar").hide();
-      }, 0);
+    beforeShow: () => setTimeout(tidyPanel, 0),
+    onChangeMonthYear: (y, m) =>
+      $start.datepicker("setDate", new Date(y, m - 1, 1)),
+    onClose: () => {
+      const $w = $("#ui-datepicker-div");
+      const m = $w.find(".ui-datepicker-month :selected").val();
+      const y = $w.find(".ui-datepicker-year :selected").val();
+      if (y && m !== null) $start.datepicker("setDate", new Date(y, m, 1));
     },
   });
 
-  // keep calendar hidden when focusing
-  $("#date-start").focus(function () {
-    $(".ui-datepicker-calendar").hide();
+  // always reopen nicely
+  $start.on("focus click", () => {
+    $start.datepicker("show");
+    tidyPanel();
   });
 });

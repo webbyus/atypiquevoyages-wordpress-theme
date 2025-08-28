@@ -228,3 +228,14 @@ div.mkdf-vertical-align-containers div.mkdf-position-left {
   background: #fff !important;
   border-top: 1px solid #ccc !important;
 }
+
+.ui-datepicker-buttonpane .ui-datepicker-current { display: none !important; }
+
+#ui-datepicker-div .ui-widget-header .ui-datepicker-next
+ {
+    right: 0px !important 
+}
+
+#ui-datepicker-div .ui-widget-header .ui-datepicker-prev {
+    left: 5px !important 
+}
