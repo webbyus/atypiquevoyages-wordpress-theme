@@ -1,45 +1,42 @@
 jQuery(function ($) {
   const today = new Date();
-  const $start = $("#date-start");
-  const $end = $("#date-end");
+  const $start = $("#date-start").prop("readonly", true);
+  const $end = $("#date-end").prop("readonly", true);
 
-  // no typing in either field
-  $start.add($end).prop("readonly", true);
-
-  // regular day pickers for others (exclude #date-start)
-  $(".past-days-disabled-date-field").not($start).datepicker({
+  // --- init #date-end (normal day picker) ---
+  $end.datepicker({
     dateFormat: "dd-mm-yy",
     minDate: today,
   });
 
-  // set global labels once
+  // --- init #date-start (month + year only) ---
   $.extend($.datepicker._defaults, { closeText: "Set Date", currentText: "" });
 
-  const tidyPanel = () => {
-    $(".ui-datepicker-calendar").hide();
-    $(".ui-datepicker-close").val("Set Date");
-  };
+  function tidy(inst) {
+    const $w = inst.dpDiv;
+    $w.find(".ui-datepicker-calendar, .ui-datepicker-current").hide();
+    $w.find(".ui-datepicker-close").val("Set Date");
+  }
 
-  // month+year picker for #date-start
   $start.datepicker({
     dateFormat: "MM yy",
     changeMonth: true,
     changeYear: true,
     showButtonPanel: true,
-    beforeShow: () => setTimeout(tidyPanel, 0),
-    onChangeMonthYear: (y, m) =>
-      $start.datepicker("setDate", new Date(y, m - 1, 1)),
-    onClose: () => {
-      const $w = $("#ui-datepicker-div");
-      const m = $w.find(".ui-datepicker-month :selected").val();
-      const y = $w.find(".ui-datepicker-year :selected").val();
-      if (y && m !== null) $start.datepicker("setDate", new Date(y, m, 1));
+    beforeShow: (input, inst) => setTimeout(() => tidy(inst), 0),
+    onChangeMonthYear: (y, m, inst) => {
+      setTimeout(() => tidy(inst), 0);
+      $start.datepicker("setDate", new Date(y, m - 1, 1));
     },
+    onClose: (txt, inst) =>
+      $start.datepicker(
+        "setDate",
+        new Date(inst.selectedYear, inst.selectedMonth, 1)
+      ),
   });
 
-  // always reopen nicely
-  $start.on("focus click", () => {
-    $start.datepicker("show");
-    tidyPanel();
+  // --- readonly inputs need this to open the picker ---
+  $start.add($end).on("focus click", function () {
+    $(this).datepicker("show");
   });
 });
