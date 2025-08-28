@@ -208,3 +208,23 @@ div.mkdf-vertical-align-containers div.mkdf-position-left {
   display: inline-block;
 }
 /* Minimal styling for Travel Request Form */
+
+/* Fix Month-Year datepicker styling */
+.ui-datepicker {
+  background: #fff !important;
+  border: 1px solid #ccc !important;
+  padding: 10px !important;
+  z-index: 9999 !important;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #ccc !important;
+  padding: 2px 4px !important;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane {
+  background: #fff !important;
+  border-top: 1px solid #ccc !important;
+}

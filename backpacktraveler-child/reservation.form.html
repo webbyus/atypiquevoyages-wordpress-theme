@@ -1,0 +1,163 @@
+<div class="trf">
+  <!-- Informations personnelles -->
+  <div class="trf__section">
+    <h3>Informations personnelles</h3>
+
+    <div class="trf__field">
+      <label for="your-name">Nom complet (obligatoire)</label><br />
+      [text* your-name id:your-name]
+    </div>
+
+    <div class="trf__field">
+      <label for="your-email">Adresse e-mail (obligatoire)</label><br />
+      [email* your-email id:your-email]
+    </div>
+
+    <div class="trf__field">
+      <label for="your-phone"
+        >Téléphone (WhatsApp ou mobile, avec indicatif pays)
+        (obligatoire)</label
+      ><br />
+      [tel* your-phone id:your-phone]
+    </div>
+
+    <div class="trf__grid trf__grid--2">
+      <div class="trf__field">
+        <label for="nationality">Nationalité</label><br />
+        [text nationality id:nationality]
+      </div>
+      <div class="trf__field">
+        <label for="age">Âge</label><br />
+        [number age min:0 max:120 id:age]
+      </div>
+    </div>
+  </div>
+
+  <!-- Détails du voyage -->
+  <div class="trf__section">
+    <h3>Détails du voyage</h3>
+
+    <p>Destination(s) souhaitée(s) (obligatoire)</p>
+    [checkbox* destinations use_label_element "Vietnam" "Sri Lanka"]
+
+    <p>Pour le Sri Lanka : extensions possibles</p>
+    [checkbox sl-extensions use_label_element "Escapade aux Maldives" "Escale à
+    Dubaï"]
+
+    <div class="trf__grid trf__grid--3">
+      <div class="trf__field">
+        <p>Dates de voyage (obligatoire)</p>
+        [radio date-type use_label_element "Flexibles" "Fixes"]
+      </div>
+      <div class="trf__field">
+        <label for="date-start">Si fixes : date d’arrivée (obligatoire)</label
+        ><br />
+        [text* date-start class:past-days-disabled-date-field id:date-start
+        placeholder "Sélectionnez une date"]
+      </div>
+      <div class="trf__field">
+        <label for="date-finish">au (obligatoire)</label><br />
+        [text* date-end class:past-days-disabled-date-field id:date-end
+        placeholder "Sélectionnez une date"]
+      </div>
+    </div>
+
+    <div class="trf__field">
+      <label for="length-of-stay">Durée estimée du séjour (nuits)</label><br />
+      [number length-of-stay min:1 id:length-of-stay]
+    </div>
+
+    <div class="trf__grid trf__grid--3">
+      <div class="trf__field">
+        <label for="adults">Adultes (obligatoire)</label><br />
+        [number* adults min:1 id:adults]
+      </div>
+      <div class="trf__field">
+        <label for="children">Enfants</label><br />
+        [number children min:0 id:children]
+      </div>
+      <div class="trf__field">
+        <label for="infants">Bébés</label><br />
+        [number infants min:0 id:infants]
+      </div>
+    </div>
+
+    <div class="trf__field">
+      <label for="children-ages">Veuillez préciser l’âge des enfants</label
+      ><br />
+      [text children-ages id:children-ages]
+    </div>
+  </div>
+
+  <!-- Préférences de voyage -->
+  <div class="trf__section">
+    <h3>Préférences de voyage</h3>
+
+    <p>Type de voyage</p>
+    [checkbox trip-type use_label_element "Circuit" "Séjour balnéaire"
+    "Culturel" "Aventure" "Luxe" "Autre"]
+
+    <div class="trf__grid trf__grid--2">
+      <div class="trf__field">
+        <p>Budget estimatif</p>
+        [radio budget-type use_label_element "Par personne" "Pour le groupe"]
+      </div>
+      <div class="trf__field">
+        <p>Tranches proposées</p>
+        [radio budget-range use_label_element "1000 à 1500 €" "1500 à 2000 €"
+        "2000 à 2500 €" "2500 à 3500 €" "3500 à 5000 €" "5000 € et plus"]
+      </div>
+    </div>
+
+    <p>Hébergement souhaité</p>
+    [checkbox accommodation use_label_element "Chez l’habitant" "Standard"
+    "Confort" "Luxe" "Charme" "Atypique"]
+
+    <p>Type de chambre</p>
+    [radio room-type use_label_element "Double" "Twin" "Triple" "familiale"]
+
+    <div class="trf__grid trf__grid--2">
+      <div class="trf__field">
+        <p>Besoin d’un guide ou chauffeur (obligatoire)</p>
+        [radio guide_language use_label_element "Anglophone" "Francophone"
+        "Autre"]
+      </div>
+      <div class="trf__field">
+        <label for="guide_language_other">Si “Autre”, veuillez préciser</label
+        ><br />
+        [text guide_language_other id:guide_language_other]
+      </div>
+    </div>
+
+    <div class="trf__field">
+      <p>Vos envies pour ce voyage</p>
+      <p class="trf__intro">
+        Que souhaitez-vous voir et faire ? Comment aimez-vous voyager ?<br />
+        Qu’est-ce qui est important pour vous ? Y a-t-il des activités à éviter
+        ?
+      </p>
+      [textarea wishes]
+    </div>
+  </div>
+
+  <!-- Informations pratiques -->
+  <div class="trf__section">
+    <h3>Informations pratiques</h3>
+
+    <div class="trf__grid trf__grid--2">
+      <div class="trf__field">
+        <p>Comment avez-vous connu le DMC ?</p>
+        [checkbox hear-about use_label_element "Site web" "Réseaux sociaux"
+        "Agence partenaire" "Recommandation" "Autre"]
+      </div>
+      <div class="trf__field">
+        <label for="hear-about-other">Si “Autre”, veuillez préciser</label
+        ><br />
+        [text hear-about-other id:hear-about-other]
+      </div>
+      <div class="trf__field">[turnstile]</div>
+    </div>
+  </div>
+  <div class="trf__actions">[submit "Envoyer"]</div>
+  <div class="trf__message">[response]</div>
+</div>
